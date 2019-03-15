@@ -6,7 +6,6 @@ import modules.timeline as timeline
 
 import flask
 
-# 实例化 flask  
 app = flask.Flask(__name__)
 
 @app.before_request
