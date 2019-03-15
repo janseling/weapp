@@ -1,0 +1,12 @@
+<!--components/hart/hart.wxml-->
+<wxs module="hart" src="./hart.wxs"></wxs>
+<view class="wrap" bindtap="{{hart.add}}" data-id="{{hartId}}">
+  <view class="hart"></view>
+  <view
+    wx:if="{{item.id == hartId}}"
+    wx:for="{{harts}}"
+    wx:key="{{item.timestamp}}"
+    id="hart-{{item.timestamp}}"
+    class="hart {{item.class}}">
+  </view>
+</view>

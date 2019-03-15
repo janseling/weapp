@@ -1,0 +1,88 @@
+var startX = 0
+var startY = 0
+
+function start (e, ins) {
+  var touch = e.touches[0] || e.changedTouches[0]
+  startX = touch.pageX
+  startY = touch.pageY
+}
+
+function drag (e, ins) {
+  var touch = e.touches[0] || e.changedTouches[0]
+  var dragX = touch.pageX - startX
+  var dragY = touch.pageY - startY
+  var deg = (dragX / 1000 * 30)
+
+  e.instance.setStyle({
+    transform: "translate(" + dragX + "px," + dragY + "px)",
+    rotate: deg + "deg"
+  })
+}
+
+function stop (e, ins)  {
+  var touch = e.touches[0] || e.changedTouches[0]
+  var dragX = touch.pageX - startX
+  var dragY = touch.pageY - startY
+  var deg = (dragX / 1000 * 30)
+  if (Math.sqrt((dragX * dragX) + (dragY * dragY)) > 160) {
+    return fadeOut(e, ins, dragX, dragY, deg, 500, Date.now())
+  }
+  fadeIn(e, ins, dragX, dragY, deg, 250, Date.now())
+}
+
+function fadeIn (e, ins, fromX, fromY, fromDeg, duration, startTime) {
+  var now = Date.now()
+  if (now - startTime <= duration) {
+    return e.instance.requestAnimationFrame(function () {
+      var rate = (Date.now() - startTime) / duration
+      var toX = fromX * (1 - rate)
+      var toY = fromY * (1 - rate)
+      var toDeg = fromDeg * (1 - rate)
+      e.instance.setStyle({
+        transform: "translate(" + toX + "px," + toY + "px)",
+        rotate: toDeg + "deg"
+      })
+      fadeIn(e, ins, fromX, fromY, fromDeg, duration, startTime)
+    })
+  }
+}
+
+function fadeOut (e, ins, fromX, fromY, fromDeg, duration, startTime) {
+  var now = Date.now()
+  if (now - startTime <= duration) {
+    return e.instance.requestAnimationFrame(function () {
+      var rate = (Date.now() - startTime) / duration
+      var toX = fromX + (((720 - fromX) * rate) * (fromX > 0 ? 1 : -1))
+      var toY = fromY + (((240 - fromY) * rate) * (fromY < 0 ? -1 : 1))
+      var toDeg = fromDeg + ((15 - fromDeg) * rate * (fromX > 0 ? 1 : -1))
+      e.instance.setStyle({
+        transform: "translate(" + toX + "px," + toY + "px)",
+        rotate: toDeg + "deg"
+      })
+      fadeOut(e, ins, fromX, fromY, fromDeg, duration, startTime)
+    })
+  }
+  e.instance.callMethod("nextCard", {})
+  scaleIn(e, ins, 300, Date.now())
+}
+
+function scaleIn (e, ins, duration, startTime) {
+  var now = Date.now()
+  if (now - startTime <= duration) {
+    e.instance.requestAnimationFrame(function () {
+      var rate = (Date.now() - startTime) / duration
+      e.instance.setStyle({
+        transform: "translate(0px,0px)scale(" + rate + ")",
+        rotate: "0deg",
+        opacity: rate
+      })
+      scaleIn(e, ins, duration, startTime)
+    })
+  }
+}
+
+module.exports = {
+  start: start,
+  drag: drag,
+  stop: stop
+}

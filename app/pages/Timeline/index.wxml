@@ -1,0 +1,11 @@
+<!--pages/Timeline/index.wxml-->
+<view class="timeline-list" wx:for="{{timeline}}" wx:key="item.id">
+  <text class="content">{{item.content}}</text>
+  <view class="tool">
+    <text class="time">{{item.time}}</text>
+    <view style="position:absolute;right:0;top:0;bottom:0;padding:20rpx 10rpx;">
+        <hart hart-id="{{item.id}}"></hart>
+    </view>
+  </view>
+</view>
+

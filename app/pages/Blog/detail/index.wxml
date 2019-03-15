@@ -1,0 +1,6 @@
+<!--pages/Blog/detail/index.wxml-->
+<view class="info">发表于:{{blog.createdTime}}  分类:<text>{{blog.category}}</text></view>
+<view class="page">
+  <wemark md="{{blog.content}}" link="true" highlight="true" type="wemark"></wemark>
+</view>
+

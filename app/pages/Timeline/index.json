@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "hart": "../../components/hart/hart"
+  },
+  "navigationBarTitleText": "Timeline"
+}

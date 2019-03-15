@@ -1,0 +1,62 @@
+/* components/hart/hart.wxss */
+.wrap {
+  position: relative;
+  display: inline-block;
+  top: -16rpx;
+  height:60rpx;
+  width:60rpx;
+}
+.hart {
+  right: 18rpx;
+  top: 18rpx;
+  width: 24rpx;
+  height: 24rpx;
+  display: block;
+  background: #fa9;
+  position: absolute;
+  transform: rotate(45deg);
+}
+.hart::before {
+  content: '';
+  width: 24rpx;
+  height: 24rpx;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: -12rpx;
+  background: #fa9;
+  border-radius: 24rpx;
+}
+.hart::after {
+  content: '';
+  width: 24rpx;
+  height: 24rpx;
+  display: block;
+  position: absolute;
+  top: -12rpx;
+  right: 0;
+  background: #fa9;
+  border-radius: 24rpx;
+}
+
+.hart-1, .hart-1::before, .hart-1::after {
+  background: #ff6e97;
+}
+.hart-2, .hart-2::before, .hart-2::after {
+  background: #ffb86c;
+}
+.hart-3, .hart-3::before, .hart-3::after {
+  background: #fffc66;
+}
+.hart-4, .hart-4::before, .hart-4::after {
+  background: #61ff69;
+}
+.hart-5, .hart-5::before, .hart-5::after {
+  background: #83fcd8;
+}
+.hart-6, .hart-6::before, .hart-6::after {
+  background: #57d2f7;
+}
+.hart-7, .hart-7::before, .hart-7::after {
+  background: #c7b3e5;
+}

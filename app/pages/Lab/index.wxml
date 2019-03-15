@@ -1,0 +1,18 @@
+<!--pages/Lab/index.wxml-->
+<wxs module="card" src="./card.wxs"></wxs>
+<view>
+  <view class="wrap">
+    <view class="card" id="qd"
+      bindtouchstart="{{card.start}}"
+      bindtouchmove="{{card.drag}}"
+      bindtouchend="{{card.stop}}"
+      bindtouchcancel="{{card.stop}}">
+      <view class="preview {{list[index].clsName}}">
+        <image class="pic1" src="./img/{{list[index].pic1}}.png"></image>
+        <image class="pic2" src="./img/{{list[index].pic2}}.png"></image>
+      </view>
+      <text class="title">{{list[index].title}}</text>
+    </view>
+  </view>
+  <text class="tips">划走卡片切换下一张</text>
+</view>

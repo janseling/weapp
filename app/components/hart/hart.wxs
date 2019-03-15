@@ -1,0 +1,48 @@
+var harts = []
+
+function add (e, ins) {
+  harts.push({
+    "id": e.currentTarget.dataset.id,
+    "sin": Math.random(),
+    "times": (Math.random() * 10) + 20,
+    "limit": (Math.random() * 60) + 10,
+    "class": "hart-" + parseInt(Math.random() * 8),
+    "style": "opacity:1;",
+    "timestamp": Date.now()
+  })
+  console.log("add to", e.currentTarget.dataset.id)
+  ins.callMethod("update", harts)
+  draw(e, ins)
+}
+
+function draw (e, ins) {
+  ins.requestAnimationFrame(function () {
+    if (harts.length > 0) {
+      var now = Date.now()
+      for (var i = 0; i < harts.length; i++) {
+        var rate = (now - harts[i].timestamp) / 3000
+        var top = -300 * rate * 1.25
+        var right = parseInt(Math.sin(top / harts[i].times * (harts[i].sin > 0.5 ? -1 : 1)) * harts[i].limit + 4)
+        var elm = ins.selectComponent("#hart-" + harts[i].timestamp)
+        if (elm) {
+          elm.setStyle({
+            right: right + "rpx",
+            opacity: 1 - rate,
+            top: top + "rpx"
+          })
+        }
+      }
+      harts = harts.filter(function (item) {
+        return now - item.timestamp < 3000
+      })
+      ins.callMethod("update", harts.filter(function (item) {
+        return item.id == e.currentTarget.dataset.id
+      }))
+    }
+    draw(e, ins)
+  })
+}
+
+module.exports = {
+  add: add
+}

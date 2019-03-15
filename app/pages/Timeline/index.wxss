@@ -1,0 +1,34 @@
+/* pages/Timeline/index.wxss */
+.timeline-list {
+  margin: 0 20rpx;
+  padding: 10rpx 10rpx 60px 10rpx;
+  border-left: 6rpx #ddd solid;
+  position: relative;
+}
+.timeline-list::before {
+  content: " ";
+  position: absolute;
+  top: 35rpx;
+  left: -13rpx;
+  width: 26rpx;
+  height: 26rpx;
+  border-radius: 26rpx;
+  background: #ddd;
+}
+.timeline-list:last-child {
+  padding-bottom: 0;
+}
+.timeline-list .content {
+  font-size: 30rpx;
+  padding: 20rpx 8rpx 0 20rpx;
+  display: block;
+  background: #fafafa;
+}
+.timeline-list .time {
+  padding-left: 18rpx;
+  font-size: 20rpx;
+  color: #999;
+}
+.timeline-list .tool {
+  position: relative;
+}

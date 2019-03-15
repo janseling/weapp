@@ -1,0 +1,41 @@
+{
+  "pages":[
+    "pages/Blog/index",
+    "pages/Blog/detail/index",
+    "pages/Timeline/index",
+    "pages/Lab/index",
+    "pages/index/index"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "backgroundColor": "#ffffff",
+    "borderStyle":"white",
+    "color":"#969696",
+    "selectedColor":"#000000",
+    "list": [
+      {
+        "iconPath":"res/img/ic-blog-normal.png",
+        "selectedIconPath":"res/img/ic-blog-active.png",
+        "pagePath": "pages/Blog/index",
+        "text": "Blog"
+      },
+      {
+        "iconPath": "res/img/ic-timeline-normal.png",
+        "selectedIconPath": "res/img/ic-timeline-active.png",
+        "pagePath": "pages/Timeline/index",
+        "text": "Timeline"
+      },
+      {
+        "iconPath": "res/img/ic-lab-normal.png",
+        "selectedIconPath": "res/img/ic-lab-active.png",
+        "pagePath": "pages/Lab/index",
+        "text": "Lab"
+      }
+    ]
+  },
+  "debug":true
+}

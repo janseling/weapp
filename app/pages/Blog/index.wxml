@@ -1,0 +1,10 @@
+<!--pages/Blog/index.wxml-->
+<view class="blog-list" wx:for="{{blogs}}" wx:key="index">
+  <text class="time">{{item.createdTime}}</text>
+  <view class="card" bindtap='toDetail' data-index='{{index}}'>
+    <view class="img">
+      <image src="{{item.pic}}"></image>
+    </view>
+    <text class="title">{{item.title}}</text>
+  </view>
+</view>
